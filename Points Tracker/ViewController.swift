@@ -24,11 +24,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        var storage: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var s1:Int?=storage.objectForKey("1score") as? Int
-        var s2:Int?=storage.objectForKey("2score") as? Int
-        var n1:String? = (storage.objectForKey("p1name") as? String)
-        var n2:String? = (storage.objectForKey("p2name") as? String)
+        let storage: UserDefaults = UserDefaults.standard
+        let s1:Int?=storage.object(forKey: "1score") as? Int
+        let s2:Int?=storage.object(forKey: "2score") as? Int
+        let n1:String? = (storage.object(forKey: "p1name") as? String)
+        let n2:String? = (storage.object(forKey: "p2name") as? String)
         if(n1 != nil)
         {
             p1label.text=n1
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func pressReset(sender: UIButton) {
+    @IBAction func pressReset(_ sender: UIButton) {
         p1score=0
         p2score=0
         applychanges()
@@ -73,19 +73,19 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func p1press(sender: UIButton) {
+    @IBAction func p1press(_ sender: UIButton) {
         p1score+=1
         applychanges()
     }
 
-    @IBAction func p2press(sender: UIButton) {
+    @IBAction func p2press(_ sender: UIButton) {
         p2score+=1
         applychanges()
     }
-    @IBAction func accesssettings(sender: UIButton) {
-        var storage: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        storage.setObject(p1score, forKey: "1score")
-        storage.setObject(p2score, forKey: "2score")
+    @IBAction func accesssettings(_ sender: UIButton) {
+        let storage: UserDefaults = UserDefaults.standard
+        storage.set(p1score, forKey: "1score")
+        storage.set(p2score, forKey: "2score")
     }
 }
 
